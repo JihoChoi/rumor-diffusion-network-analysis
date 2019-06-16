@@ -1,3 +1,27 @@
+
+# --------------------------------
+# Rumor Diffusion Network Analysis
+# --------------------------------
+
+# Project Directories
+out/
+data/
+temp/
+
+# Twitter API Keys
+keys.json
+
+# Temporal Jupyter Notebook
+temp.ipynb
+
+# PyCharm
+.idea
+
+
+# ------------------------------------
+# Default Python GitIgnore from GitHub
+# ------------------------------------
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
