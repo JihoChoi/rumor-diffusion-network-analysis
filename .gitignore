@@ -22,6 +22,7 @@ temp.ipynb
 # Default Python GitIgnore from GitHub
 # ------------------------------------
 
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
