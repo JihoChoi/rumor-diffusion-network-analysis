@@ -1,3 +1,5 @@
+import sys
+sys.path.append('..')
 from util import *
 
 from sklearn.model_selection import train_test_split
@@ -109,9 +111,9 @@ def main():
     test_classification_tasks()
 
 
-print("===========================")
-print("     Rumor Classifiers     ")
-print("===========================")
+print("==============================")
+print("     Rumor Classification     ")
+print("==============================")
 
 if __name__ == '__main__':
     start_time = time.time()  # Timer Start

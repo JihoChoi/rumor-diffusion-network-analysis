@@ -1,3 +1,5 @@
+import sys
+sys.path.append('..')
 from util import *
 
 
@@ -49,9 +51,9 @@ def main():
     aggregate_feature_sets()
 
 
-print("===================")
-print("     Aggregate     ")
-print("===================")
+print("=============================")
+print("     Feature Aggregation     ")
+print("=============================")
 
 if __name__ == '__main__':
     start_time = time.time()  # Timer Start
