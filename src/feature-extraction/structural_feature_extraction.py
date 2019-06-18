@@ -1,5 +1,5 @@
-# import sys
-# sys.path.append('..')
+import sys
+sys.path.append('..')
 from util import *
 
 
@@ -196,9 +196,9 @@ def main():
 
 # Rumor Diffusion Analysis Project
 # https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-no_retweets-ids
-print("=============================")
-print("     Structural Analysis     ")
-print("=============================\n\n")
+print("=======================================")
+print("     Structural Feature Extraction     ")
+print("=======================================\n\n")
 
 if __name__ == '__main__':
     start_time = time.time()  # Timer Start

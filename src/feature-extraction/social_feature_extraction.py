@@ -1,4 +1,5 @@
-# from project_settings import *
+import sys
+sys.path.append('..')
 from util import *
 
 
@@ -99,8 +100,11 @@ class Cascade:
                     delta_friends_count = dst_user.friends_count - src_user.friends_count
                     self.delta_followers_count_list.append(delta_followers_count)
                     self.delta_friends_count_list.append(delta_friends_count)
-                except Exception as e:
-                    print(e)
+                except FileNotFoundError as e:
+                    pass
+                except EOFError as e:  # Empty File
+                    # print(self.file_id, src_user_id, dst_user_id)
+                    pass
 
                 # NetworkX Graph
                 self.network.add_weighted_edges_from([(src_user_id, dst_user_id, float(dst_tweet_time) - float(src_tweet_time))])
@@ -127,6 +131,7 @@ class Cascade:
         return max_v, avg_v
 
     def calc_social_features(self):
+        G = self.network
         follower_count_list = []
         friend_count_list = []
         listed_count_list = []
@@ -166,8 +171,8 @@ class Cascade:
 
         print("-----------" * 4) if not self.user_not_found_counter else 0
         print("\tUser not found: {} / {} = {:3.2}".format(self.user_not_found_counter,
-                                  self.user_not_found_counter + self.user_found_counter,
-                                  self.user_not_found_counter / (self.user_not_found_counter + self.user_found_counter)))
+                                                          self.user_not_found_counter + self.user_found_counter,
+                                                          self.user_not_found_counter / (self.user_not_found_counter + self.user_found_counter)))
         print('\tFollower Max:{:10}, Avg:{}'.format(max_follower_count, avg_follower_count))
         print('\tFriend   Max:{:10}, Avg:{}'.format(max_friend_count, avg_friend_count))
 
@@ -186,12 +191,10 @@ class Cascade:
             'social_____max_statuses': max_statuses_count,
             'social_____avg_statuses': avg_statuses_count,
             'social_____verified_percent': verified_user_percent,
-
             'social_____max_delta_follower': max_delta_followers_count,
             'social_____avg_delta_follower': avg_delta_followers_count,
             'social_____max_delta_friend': max_delta_friends_count,
             'social_____avg_delta_friend': avg_delta_friends_count,
-
             'social_____delta_followers_count_up': self.delta_followers_count_up_count,
             'social_____delta_followers_count_down': self.delta_followers_count_down_count,
             'social_____delta_followers_count_else': self.delta_followers_count_equal_count,
@@ -283,6 +286,7 @@ class CascadeAnalyzer(object):
 
 def main():
     # CascadeAnalyzer -> Overall / Cascade -> Individual
+    # print(os.getcwd())
     analyzer = CascadeAnalyzer()
     analyzer.iterate_cascades()
     analyzer.cascade_to_csv()
@@ -292,9 +296,9 @@ def main():
 
 # https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-no_retweets-ids
 
-print("==============================")
-print("     Social Info Analysis     ")
-print("==============================\n\n")
+print("===================================")
+print("     Social Feature Extraction     ")
+print("===================================\n\n")
 
 if __name__ == '__main__':
     start_time = time.time()  # Timer Start

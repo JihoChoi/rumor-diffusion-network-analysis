@@ -1,4 +1,5 @@
-# from project_settings import *
+import sys
+sys.path.append('..')
 from util import *
 
 
@@ -136,9 +137,9 @@ def main():
 
 # Rumor Diffusion Analysis Project
 # https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-no_retweets-ids
-print("==========================")
-print("     Cascade Analysis     ")
-print("==========================")
+print("=====================================")
+print("     Temporal Feature Extraction     ")
+print("=====================================")
 
 if __name__ == '__main__':
     start_time = time.time()  # Timer Start
