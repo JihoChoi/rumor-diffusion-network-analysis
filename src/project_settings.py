@@ -71,7 +71,7 @@ DATA_PATH = ROOT + 'data/rumor_detection_acl2017/' + DATASET
 
 RAW_DATA_PATH = ROOT + 'data/rumor_detection_acl2017/' + DATASET
 INTERIM_DATA_PATH = ROOT + 'data/interim/' + DATASET
-SOCIAL_DATA_PATH = ROOT + 'data/social/' + DATASET
+# SOCIAL_DATA_PATH = ROOT + 'data/social/' + DATASET
 PROCESSED_DATA_PATH = ROOT + 'data/processed/' + DATASET
 
 # TODO
