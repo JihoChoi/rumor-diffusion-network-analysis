@@ -1,4 +1,7 @@
+import sys
+sys.path.append('..')
 from util import *
+
 
 """
 Social Information Collector using Twitter API

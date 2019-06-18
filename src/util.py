@@ -9,11 +9,14 @@ def ensure_directory(path):
 
 
 def mean_max_of_list(list):
-    if len(list) == 0:
-        return 0, 0
-    mean_v = sum(list) / len(list)
-    max_v = max(list)
-    return mean_v, max_v
+    # if not len(list):
+    #     return 0, 0
+    # mean_v = sum(list) / len(list)
+    # max_v = max(list)
+    # return mean_v, max_v
+    avg_v = sum(list) / len(list) if len(list) else 0
+    max_v = max(list) if list else 0
+    return avg_v, max_v
 
 
 def save_pickle_file(path, file_name, data):

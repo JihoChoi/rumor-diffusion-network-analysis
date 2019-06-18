@@ -46,8 +46,12 @@ echo "---------"
 unzip data/rumdetect2017.zip -d data/
 rm data/rumdetect2017.zip
 
-
-
 # Remove Duplicate Lines
 # sort 760109079133990912.txt | uniq -d
+
+echo "--------------------------"
+echo "  REMOVE DUPLICATE LINES  "
+echo "--------------------------"
+cd ./src/data_preparation
+python3 ./remove_duplicate_lines.py
 
