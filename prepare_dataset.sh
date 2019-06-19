@@ -52,6 +52,6 @@ rm data/rumdetect2017.zip
 echo "--------------------------"
 echo "  REMOVE DUPLICATE LINES  "
 echo "--------------------------"
-cd ./src/data_preparation
+cd ./src/data-preparation
 python3 ./remove_duplicate_lines.py
 

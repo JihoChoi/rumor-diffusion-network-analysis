@@ -1,4 +1,3 @@
-
 # --------------------------------
 # Rumor Diffusion Network Analysis
 # --------------------------------
@@ -17,11 +16,13 @@ temp.ipynb
 # PyCharm
 .idea
 
+# Etc,
+commit-messages.txt
+
 
 # ------------------------------------
 # Default Python GitIgnore from GitHub
 # ------------------------------------
-
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

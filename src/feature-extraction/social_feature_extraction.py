@@ -124,12 +124,6 @@ class Cascade:
         user = pickle.load(pickle_file)
         return user
 
-    @staticmethod
-    def max_avg_of_list(list):
-        max_v = max(list) if list else 0
-        avg_v = sum(list) / len(list) if len(list) else 0
-        return max_v, avg_v
-
     def calc_social_features(self):
         G = self.network
         follower_count_list = []
