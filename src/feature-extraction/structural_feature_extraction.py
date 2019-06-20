@@ -1,6 +1,6 @@
 import sys
 sys.path.append('..')
-from util import *
+from utils import *
 
 
 class Cascade:
@@ -135,7 +135,7 @@ class Cascade:
             'structural_7_hop_neighbor_count': self.network_features['7_hop_neighbor_count'],
             'structural_8_hop_neighbor_count': self.network_features['8_hop_neighbor_count'],
             'structural_avg_depth': self.avg_depth,
-            'structural_max_depth': self.max_depth
+            # 'structural_max_depth': self.max_depth  # duplicate
         }, ignore_index=True)
 
 

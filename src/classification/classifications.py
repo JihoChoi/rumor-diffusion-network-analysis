@@ -1,6 +1,6 @@
 import sys
 sys.path.append('..')
-from util import *
+from utils import *
 
 from sklearn.model_selection import train_test_split
 # from sklearn import datasets
@@ -51,7 +51,7 @@ def test_classification_tasks():
     # -------------
     #   DROP ROWS
     # -------------
-    df = df[df.label != 'unverified']
+    # df = df[df.label != 'unverified']
     # df = df[df.label != 'non-rumor']
 
     # ---------------
@@ -75,7 +75,7 @@ def test_classification_tasks():
         f1_macro_results = []
         f1_micro_results = []
 
-        for i in range(10):
+        for i in range(50):
 
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)  # 5-fold cross validation
 
