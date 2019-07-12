@@ -25,7 +25,7 @@ def test_classification_tasks():
     for index, file in enumerate(os.listdir(OUT_PATH)):
         if file.startswith("comb_dataset_") and file.endswith(".csv"):
             file_name = os.path.splitext(file)[0].split('_')
-            timestamp = file_name[2] + '_' +  file_name[3]
+            timestamp = file_name[2] + '_' + file_name[3]
             if timestamp > latest_feature_set_time:
                 latest_feature_set_time = timestamp
 
@@ -34,8 +34,8 @@ def test_classification_tasks():
     df = pd.read_csv(features_path, sep=',')
     # df = pd.read_csv(OUT_PATH + 'dataset_20190513_115505.csv', sep=',')
 
-    feature_set = ['structural', 'temporal', 'social']
-    label_set = ['true', 'false', 'unverified', 'non-rumor']
+    # feature_set = ['structural', 'temporal', 'social']
+    # label_set = ['true', 'false', 'unverified', 'non-rumor']
 
     # print(df.dtypes)
     df = df.fillna(0)
@@ -43,24 +43,20 @@ def test_classification_tasks():
     # ----------------
     #   DROP COLUMNS
     # ----------------
-    if 'temporal___longest_length' in df:
-        df = df.drop(columns=['temporal___longest_length'])
-    if 'temp_longest_length' in df:
-        df = df.drop(columns=['temp_longest_length'])
+    # if 'temporal___longest_length' in df:
+    #     df = df.drop(columns=['temporal___longest_length'])
+    # if 'temp_longest_length' in df:
+    #     df = df.drop(columns=['temp_longest_length'])
 
-    # -------------
-    #   DROP ROWS
-    # -------------
+    # ---------------------
+    #   DROP ROWS (label)
+    # ---------------------
     # df = df[df.label != 'unverified']
     # df = df[df.label != 'non-rumor']
 
-    # ---------------
-    #   Assign X, y
-    # ---------------
     X = df.drop(columns=['tweet_id', 'label'])
     y = df['label']
 
-    # Brief Information
     # print(df.shape, df['label'].value_counts().to_dict())
     # print(df.info())
 
@@ -75,8 +71,7 @@ def test_classification_tasks():
         f1_macro_results = []
         f1_micro_results = []
 
-        for i in range(50):
-
+        for i in range(10):
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)  # 5-fold cross validation
 
             clf = classifiers[classifier_name]
