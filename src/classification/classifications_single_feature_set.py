@@ -30,7 +30,10 @@ def test_classification_tasks():
                 latest_feature_set_time = timestamp
 
     print(latest_feature_set_time)
-    features_path = OUT_PATH + 'comb_dataset_' + latest_feature_set_time + ".csv"
+#   features_path = OUT_PATH + 'comb_dataset_' + latest_feature_set_time + ".csv"
+    features_path = OUT_PATH + 'structural_analysis_20190705_095032.csv'
+    features_path = OUT_PATH + 'temporal_analysis_20190701_174001.csv'
+    features_path = OUT_PATH + 'social_analysis_20190701_175006.csv'
     df = pd.read_csv(features_path, sep=',')
     # df = pd.read_csv(OUT_PATH + 'dataset_20190513_115505.csv', sep=',')
 
@@ -71,7 +74,7 @@ def test_classification_tasks():
         f1_macro_results = []
         f1_micro_results = []
 
-        for i in range(100):
+        for i in range(10):
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)  # 5-fold cross validation
 
             clf = classifiers[classifier_name]

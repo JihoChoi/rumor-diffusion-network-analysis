@@ -135,7 +135,7 @@ class Cascade:
             'structural_7_hop_neighbor_count': self.network_features['7_hop_neighbor_count'],
             'structural_8_hop_neighbor_count': self.network_features['8_hop_neighbor_count'],
             'structural_avg_depth': self.avg_depth,
-            # 'structural_max_depth': self.max_depth  # duplicate
+            'structural_max_depth': self.max_depth  # duplicate
         }, ignore_index=True)
 
 
@@ -144,6 +144,8 @@ class CascadeAnalyzer(object):
     feature_df = pd.DataFrame()  # output
 
     def __init__(self):
+
+
         self.meta_df = pd.DataFrame()  # labels / key: root_tweet_id
         self.cascades_dict = {}  # key: root_tweet_id, value: Cascade()
         self.retrieve_cascade_labels()
@@ -171,6 +173,8 @@ class CascadeAnalyzer(object):
             cascade_path = os.path.join(DATA_PATH + 'tree_u', file)
             label = self.meta_df.loc[self.meta_df['tweet_id'] == root_tweet_id, 'label'].item()  # label
             self.cascades_dict[root_tweet_id] = Cascade(root_tweet_id, cascade_path, label)
+
+            print(self.cascades_dict[root_tweet_id])
 
     # Main Outer loop
     def iterate_cascades(self):

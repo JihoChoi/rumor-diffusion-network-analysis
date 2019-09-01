@@ -7,13 +7,19 @@
 
 cd ./src
 
-: '
-'
+
+
+
 
 cd ./feature-extraction
 python3 ./structural_feature_extraction.py
 python3 ./temporal_feature_extraction.py
 python3 ./social_feature_extraction.py
+python3 ./structural_temporal_feature_extraction.py
+
+
+# TODO struct_temp_feature
+
 cd ..
 
 
