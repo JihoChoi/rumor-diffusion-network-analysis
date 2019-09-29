@@ -112,20 +112,21 @@ class Cascade:
         for i in range(max_hop_count - 1):
             self.network_features[str(i) + "_hop_neighbor_count"] = hops[i + 1] - hops[i]
 
+
+
         # features to data frame
         CascadeAnalyzer.feature_df = CascadeAnalyzer.feature_df.append({
             'tweet_id': self.root_tweet_id, 'label': self.label,
             'structural_trace_count': self.trace_count,
             'structural_retweet_count': self.retweet_count,
             'structural_reply_count': self.reply_count,
+            'structural_reply_retweet_ratio': self.reply_count / self.retweet_count,
             'structural_src_user_count': self.src_user_count,
             'structural_dst_user_count': self.dst_user_count,
-            'structural_retweet_reply_percent': self.retweet_count / (self.retweet_count + self.reply_count),
-            'structural_src_dst_user_percent': self.src_user_count / (self.src_user_count + self.dst_user_count),  # <--
+            'structural_dst_user_src_user_ratio': self.dst_user_count / self.src_user_count,
             'structural_retweet_users_count': len(self.retweet_users),
             'structural_reply_users_count': len(self.reply_users),
-            'structural_root_to_all_depth_sum': sum(nx.single_source_shortest_path_length(G, self.root_user_id).values()),
-            'structural_root_to_all_depth_max': max(nx.single_source_shortest_path_length(G, self.root_user_id).values()),
+            'structural_reply_retweet_users_ratio': len(self.reply_users) / len(self.retweet_users),
             'structural_1_hop_neighbor_count': self.network_features['1_hop_neighbor_count'],
             'structural_2_hop_neighbor_count': self.network_features['2_hop_neighbor_count'],
             'structural_3_hop_neighbor_count': self.network_features['3_hop_neighbor_count'],
@@ -134,8 +135,13 @@ class Cascade:
             'structural_6_hop_neighbor_count': self.network_features['6_hop_neighbor_count'],
             'structural_7_hop_neighbor_count': self.network_features['7_hop_neighbor_count'],
             'structural_8_hop_neighbor_count': self.network_features['8_hop_neighbor_count'],
-            'structural_avg_depth': self.avg_depth,
-            'structural_max_depth': self.max_depth  # duplicate
+            'structural_root_to_all_depth_sum': sum(nx.single_source_shortest_path_length(G, self.root_user_id).values()),
+            'structural_root_to_all_depth_avg': sum(nx.single_source_shortest_path_length(G, self.root_user_id).values()) / self.dst_user_count,
+            'structural_root_to_all_depth_max': max(nx.single_source_shortest_path_length(G, self.root_user_id).values()),
+            # 'structural_avg_depth': self.avg_depth,  # duplicate
+            # 'structural_max_depth': self.max_depth,  # duplicate
+            'structural_network_density': nx.density(G),  # duplicate
+            'structural_network_avg_betweenness_centrality': np.mean(list(nx.betweenness_centrality(G).values())),
         }, ignore_index=True)
 
 
@@ -144,8 +150,6 @@ class CascadeAnalyzer(object):
     feature_df = pd.DataFrame()  # output
 
     def __init__(self):
-
-
         self.meta_df = pd.DataFrame()  # labels / key: root_tweet_id
         self.cascades_dict = {}  # key: root_tweet_id, value: Cascade()
         self.retrieve_cascade_labels()

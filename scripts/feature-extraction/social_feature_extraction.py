@@ -180,7 +180,7 @@ class Cascade:
             'social_____avg_friend': avg_friend_count,
             'social_____max_listed': max_listed_count,
             'social_____avg_listed': avg_listed_count,
-            'social_____max_favourites': max_favourites_count,
+            'social_____max_favourites': max_favourites_count,  # favorites
             'social_____avg_favourites': avg_favourites_count,
             'social_____max_statuses': max_statuses_count,
             'social_____avg_statuses': avg_statuses_count,

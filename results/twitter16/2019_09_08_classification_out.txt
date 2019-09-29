@@ -1,0 +1,251 @@
+==============================
+     Rumor Classification
+==============================
+20190908_180942
+
+
+XGB
+MEAN             STD     MEDIAN
+ACC              0.6943 +- 0.0346
+F1-macro         0.6867 +- 0.0327
+F1-micro         0.6943 +- 0.0346
+                                             importance
+temporal___avg_diff_time_from_src              0.111691
+structural_trace_count                         0.069386
+social_____max_listed                          0.053966
+structural_retweet_users_count                 0.041250
+social_____max_follower                        0.039427
+social_____verified_percent                    0.034125
+social_____avg_favourites                      0.032655
+structural_dst_user_count                      0.030509
+struct_temp_1_hop_neighbor_mean_time           0.028965
+structural_5_hop_neighbor_count                0.028382
+social_____avg_listed                          0.028222
+temporal___avg_retweet_time_from_src           0.026952
+structural_src_user_count                      0.025934
+social_____avg_delta_friend                    0.023382
+temporal___avg_retweet_time_from_root          0.022547
+structural_retweet_count                       0.020697
+social_____delta_followers_count_down          0.019731
+structural_root_to_all_depth_sum               0.019278
+structural_1_hop_neighbor_count                0.019208
+temporal___avg_reply_time_from_root            0.019049
+struct_temp_1_hop_neighbor_max_time            0.018947
+structural_src_dst_user_percent                0.017849
+social_____avg_delta_follower                  0.017302
+social_____max_favourites                      0.015530
+social_____delta_followers_count_up_percent    0.014723
+social_____avg_follower                        0.014442
+structural_3_hop_neighbor_count                0.014018
+structural_retweet_reply_percent               0.013926
+social_____max_friend                          0.013808
+struct_temp_2_hop_neighbor_median_time         0.013473
+social_____max_delta_follower                  0.012789
+structural_avg_depth                           0.012349
+structural_4_hop_neighbor_count                0.012096
+structural_reply_count                         0.011557
+social_____avg_friend                          0.011461
+social_____max_statuses                        0.011157
+struct_temp_1_hop_neighbor_median_time         0.011011
+structural_reply_users_count                   0.010965
+structural_2_hop_neighbor_count                0.010574
+temporal___avg_diff_time_from_root             0.009922
+temporal___avg_reply_time_from_src             0.008969
+social_____max_delta_friend                    0.008691
+social_____avg_statuses                        0.008568
+social_____delta_followers_count_up            0.008339
+structural_8_hop_neighbor_count                0.002180
+struct_temp_2_hop_neighbor_max_time            0.000000
+struct_temp_2_hop_neighbor_mean_time           0.000000
+structural_max_depth                           0.000000
+structural_7_hop_neighbor_count                0.000000
+structural_6_hop_neighbor_count                0.000000
+structural_root_to_all_depth_max               0.000000
+social_____delta_followers_count_else          0.000000
+=================================================================================
+
+
+GRADB
+MEAN             STD     MEDIAN
+ACC              0.7044 +- 0.0302
+F1-macro         0.6988 +- 0.0302
+F1-micro         0.7044 +- 0.0302
+                                             importance
+social_____avg_favourites                      0.111561
+social_____max_follower                        0.098389
+temporal___avg_diff_time_from_src              0.088763
+social_____verified_percent                    0.080227
+social_____max_listed                          0.070607
+structural_trace_count                         0.068027
+struct_temp_2_hop_neighbor_max_time            0.029669
+social_____avg_listed                          0.026536
+social_____max_favourites                      0.025399
+social_____avg_delta_follower                  0.025380
+structural_retweet_reply_percent               0.024381
+struct_temp_1_hop_neighbor_median_time         0.021616
+temporal___avg_retweet_time_from_src           0.021144
+social_____avg_statuses                        0.018905
+struct_temp_1_hop_neighbor_max_time            0.017182
+social_____max_delta_follower                  0.016702
+social_____avg_friend                          0.016447
+struct_temp_2_hop_neighbor_mean_time           0.014631
+structural_retweet_users_count                 0.014408
+social_____avg_follower                        0.013501
+social_____delta_followers_count_up_percent    0.013101
+structural_src_dst_user_percent                0.012846
+social_____max_delta_friend                    0.011970
+structural_retweet_count                       0.011334
+social_____avg_delta_friend                    0.010726
+struct_temp_1_hop_neighbor_mean_time           0.010402
+social_____delta_followers_count_down          0.010336
+social_____max_statuses                        0.010155
+structural_reply_count                         0.009571
+structural_1_hop_neighbor_count                0.009368
+structural_avg_depth                           0.009277
+temporal___avg_reply_time_from_root            0.009270
+structural_dst_user_count                      0.009236
+social_____max_friend                          0.008203
+temporal___avg_reply_time_from_src             0.008023
+temporal___avg_diff_time_from_root             0.006551
+structural_3_hop_neighbor_count                0.006525
+structural_src_user_count                      0.005369
+struct_temp_2_hop_neighbor_median_time         0.004857
+structural_reply_users_count                   0.004836
+social_____delta_followers_count_up            0.004516
+temporal___avg_retweet_time_from_root          0.003798
+structural_2_hop_neighbor_count                0.001726
+structural_root_to_all_depth_max               0.001252
+structural_root_to_all_depth_sum               0.001242
+structural_6_hop_neighbor_count                0.000530
+structural_max_depth                           0.000446
+structural_7_hop_neighbor_count                0.000384
+structural_8_hop_neighbor_count                0.000322
+social_____delta_followers_count_else          0.000282
+structural_4_hop_neighbor_count                0.000066
+structural_5_hop_neighbor_count                0.000003
+=================================================================================
+
+
+ADAB
+MEAN             STD     MEDIAN
+ACC              0.6114 +- 0.0393
+F1-macro         0.5982 +- 0.0406
+F1-micro         0.6114 +- 0.0393
+                                             importance
+social_____avg_favourites                          0.12
+social_____avg_delta_follower                      0.08
+social_____verified_percent                        0.08
+social_____max_listed                              0.08
+structural_retweet_reply_percent                   0.06
+structural_trace_count                             0.04
+structural_reply_users_count                       0.04
+social_____max_delta_follower                      0.04
+social_____avg_delta_friend                        0.04
+social_____max_friend                              0.04
+temporal___avg_diff_time_from_src                  0.02
+temporal___avg_reply_time_from_root                0.02
+struct_temp_2_hop_neighbor_median_time             0.02
+temporal___avg_reply_time_from_src                 0.02
+structural_src_user_count                          0.02
+social_____avg_follower                            0.02
+social_____avg_friend                              0.02
+social_____avg_listed                              0.02
+social_____delta_followers_count_up                0.02
+social_____max_favourites                          0.02
+social_____max_delta_friend                        0.02
+social_____max_follower                            0.02
+structural_retweet_users_count                     0.02
+structural_max_depth                               0.02
+social_____max_statuses                            0.02
+struct_temp_1_hop_neighbor_median_time             0.02
+struct_temp_2_hop_neighbor_mean_time               0.02
+structural_3_hop_neighbor_count                    0.02
+social_____avg_statuses                            0.02
+social_____delta_followers_count_else              0.00
+social_____delta_followers_count_up_percent        0.00
+struct_temp_1_hop_neighbor_max_time                0.00
+struct_temp_1_hop_neighbor_mean_time               0.00
+struct_temp_2_hop_neighbor_max_time                0.00
+structural_1_hop_neighbor_count                    0.00
+social_____delta_followers_count_down              0.00
+structural_dst_user_count                          0.00
+structural_4_hop_neighbor_count                    0.00
+structural_5_hop_neighbor_count                    0.00
+structural_6_hop_neighbor_count                    0.00
+structural_7_hop_neighbor_count                    0.00
+structural_8_hop_neighbor_count                    0.00
+structural_avg_depth                               0.00
+structural_reply_count                             0.00
+structural_2_hop_neighbor_count                    0.00
+structural_retweet_count                           0.00
+structural_root_to_all_depth_max                   0.00
+structural_root_to_all_depth_sum                   0.00
+structural_src_dst_user_percent                    0.00
+temporal___avg_diff_time_from_root                 0.00
+temporal___avg_retweet_time_from_root              0.00
+temporal___avg_retweet_time_from_src               0.00
+=================================================================================
+/home/jihochoi/.local/lib/python3.5/site-packages/sklearn/ensemble/forest.py:245: FutureWarning: The default value of n_estimators will change from 10 in version 0.20 to 100 in 0.22.
+  "10 in version 0.20 to 100 in 0.22.", FutureWarning)
+
+
+RF
+MEAN             STD     MEDIAN
+ACC              0.6458 +- 0.0347
+F1-macro         0.641 +- 0.0351
+F1-micro         0.6458 +- 0.0347
+                                             importance
+temporal___avg_diff_time_from_src              0.061999
+structural_trace_count                         0.058138
+social_____max_follower                        0.055473
+social_____max_listed                          0.052515
+struct_temp_2_hop_neighbor_max_time            0.042234
+social_____verified_percent                    0.032833
+struct_temp_1_hop_neighbor_max_time            0.031673
+social_____avg_delta_follower                  0.030253
+structural_root_to_all_depth_sum               0.029215
+struct_temp_2_hop_neighbor_mean_time           0.027916
+struct_temp_1_hop_neighbor_mean_time           0.027043
+social_____avg_friend                          0.026637
+temporal___avg_retweet_time_from_src           0.026220
+social_____avg_listed                          0.026192
+social_____avg_favourites                      0.024836
+structural_retweet_reply_percent               0.023140
+social_____avg_follower                        0.021724
+structural_dst_user_count                      0.021233
+structural_retweet_users_count                 0.020183
+social_____max_favourites                      0.020036
+structural_src_dst_user_percent                0.019667
+struct_temp_1_hop_neighbor_median_time         0.019519
+structural_reply_count                         0.019459
+social_____delta_followers_count_down          0.018189
+temporal___avg_reply_time_from_root            0.017890
+social_____avg_delta_friend                    0.016916
+social_____delta_followers_count_up_percent    0.016370
+structural_reply_users_count                   0.015824
+structural_retweet_count                       0.015596
+social_____max_statuses                        0.015593
+social_____max_delta_follower                  0.015199
+structural_1_hop_neighbor_count                0.014433
+struct_temp_2_hop_neighbor_median_time         0.012600
+social_____delta_followers_count_up            0.012315
+social_____avg_statuses                        0.011919
+temporal___avg_reply_time_from_src             0.011343
+structural_avg_depth                           0.011187
+social_____max_delta_friend                    0.011010
+temporal___avg_diff_time_from_root             0.010119
+structural_2_hop_neighbor_count                0.009323
+temporal___avg_retweet_time_from_root          0.008772
+structural_src_user_count                      0.007023
+structural_3_hop_neighbor_count                0.006684
+structural_root_to_all_depth_max               0.006436
+social_____max_friend                          0.006223
+structural_4_hop_neighbor_count                0.005981
+structural_max_depth                           0.003804
+structural_6_hop_neighbor_count                0.000645
+structural_8_hop_neighbor_count                0.000359
+structural_5_hop_neighbor_count                0.000108
+social_____delta_followers_count_else          0.000000
+structural_7_hop_neighbor_count                0.000000
+=================================================================================
+Elapsed Time: 205.975 seconds

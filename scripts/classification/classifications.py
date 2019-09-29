@@ -71,6 +71,8 @@ def test_classification_tasks():
         f1_macro_results = []
         f1_micro_results = []
 
+        max_accuracy = 0
+
         for i in range(100):
             X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.20)  # 5-fold cross validation
 
@@ -88,16 +90,18 @@ def test_classification_tasks():
             f1_macro_results.append(f1_macro)
             f1_micro_results.append(f1_micro)
 
+            if accuracy > max_accuracy:
+                max_accuracy = accuracy
+                feature_importances = pd.DataFrame(clf.feature_importances_, index=X_train.columns,
+                                                   columns=['importance']).sort_values('importance', ascending=False)
+
         print('\n\n' + classifier_name)
         print('MEAN    \t STD\t MEDIAN')
         print('ACC     \t', round(st.mean(accuracy_results), 4), '+-', round(st.pstdev(accuracy_results), 4))
         print('F1-macro\t', round(st.mean(f1_macro_results), 4), '+-', round(st.pstdev(f1_macro_results), 4))
         print('F1-micro\t', round(st.mean(f1_micro_results), 4), '+-', round(st.pstdev(f1_micro_results), 4))
 
-        # print('\n\n' + str(list(df.columns)))
-        feature_importances = pd.DataFrame(clf.feature_importances_, index=X_train.columns,
-                                            columns=['importance']).sort_values('importance', ascending=False)
-
+        print(max_accuracy)
         print(feature_importances)
         print("==========================="*3)
 

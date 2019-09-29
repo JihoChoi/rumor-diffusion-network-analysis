@@ -25,8 +25,8 @@ import tweepy
 # =========================
 
 # Root Directory
-# ROOT = '../'  # Suppose main() is called from ./src directory
-ROOT = '../../'  # Suppose script is called from ./src/*/ directory
+# ROOT = '../'  # Suppose main() is called from ./scripts directory
+ROOT = '../../'  # Suppose script is called from ./scripts/*/ directory
 # ROOT = os.path.abspath(ROOT) + '/'
 print("ROOT PATH:", ROOT)
 
@@ -65,6 +65,7 @@ DATASET = DATASETS[1]
 
 # Input (Raw) data path
 DATA_PATH = ROOT + 'data/rumor_detection_acl2017/' + DATASET
+# DATA_PATH = ROOT + 'data/rumor_detection_acl2017_dev/' + DATASET  # DEVELOPMENT DATASET
 
 # ====================
 #   Input File Paths
