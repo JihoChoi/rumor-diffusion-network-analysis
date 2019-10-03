@@ -49,6 +49,7 @@ class Cascade:
                 self.root_tweet_id = elem_list[4]
 
             # Load Cascade
+
             for index, line in enumerate(file):  # Trace
                 elem_list = re.split(r"[\'\,\->\[\]]", line.strip())
                 elem_list = [x.strip() for x in elem_list if x.strip()]  # remove empty elements
@@ -71,6 +72,7 @@ class Cascade:
                     reply_diff_time_from_src_list.append(diffusion_time_from_src)
                     reply_diff_time_from_root_list.append(diffusion_time_from_root)
                     reply_count += 1
+
 
         # TODO:
         #     Load method only do load

@@ -1,12 +1,13 @@
+
+
 : '
 --------------------------------------------------------------------------------------------------
-    Jiho Choi (jihochoi@snu.ac.kr)
-        - https://github.com/JihoChoi
+Jiho Choi (jihochoi@snu.ac.kr)
+- https://github.com/JihoChoi
 --------------------------------------------------------------------------------------------------
 '
 
 cd ./scripts
-
 
 
 
@@ -26,7 +27,10 @@ cd ..
 cd ./classification
 python3 ./aggregation.py
 python3 ./classifications.py
+python3 ./ablation_study.py
 cd ..
 
 
 cd ..
+
+

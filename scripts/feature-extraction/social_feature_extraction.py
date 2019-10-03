@@ -64,6 +64,7 @@ class Cascade:
                 self.root_tweet_id = elem_list[4]
 
             # Load Cascade
+
             for index, line in enumerate(file):  # Trace
                 elem_list = re.split(r"[\'\,\->\[\]]", line.strip())
                 elem_list = [x.strip() for x in elem_list if x.strip()]  # remove empty elements
@@ -108,6 +109,7 @@ class Cascade:
 
                 # NetworkX Graph
                 self.network.add_weighted_edges_from([(src_user_id, dst_user_id, float(dst_tweet_time) - float(src_tweet_time))])
+
 
         # Store computed cascade information
         self.trace_count = index
