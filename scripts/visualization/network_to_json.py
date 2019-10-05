@@ -2,16 +2,12 @@ import sys
 sys.path.append('..')
 from utils import *
 
-# total counters
-all_users = set()
-users_dict = {'true': set(), 'false': set(), 'unverified': set(), 'non-rumor': set()}
-
-trace_counter = 0
-trace_dict = {'true': 0, 'false': 0, 'unverified': 0, 'non-rumor': 0}
-
+from networkx.readwrite import json_graph
+import json
 
 
 class Cascade:
+
     # --------------------------
     #      Initiate Cascade
     # --------------------------
@@ -25,12 +21,10 @@ class Cascade:
         # ------------
         # Load Cascade
         # ------------
-        self.trace_count = None
         self.network = nx.DiGraph()
         self.load_cascade()
 
     def load_cascade(self):
-        global trace_counter
         with open(self.cascade_path, 'r') as file:
             # ---- -----------------
             # Set Root: User, Tweet
@@ -39,11 +33,6 @@ class Cascade:
                 elem_list = [x.strip() for x in re.split(r"[\'\,\->\[\]]", line.strip()) if x.strip()]
                 if elem_list[0] == 'ROOT' and elem_list[1] == 'ROOT':
                     self.root_user_id = elem_list[3]
-                    all_users.add(self.root_user_id)
-                    users_dict[self.label].add(self.root_user_id)
-                    trace_counter += 1
-                    trace_dict[self.label] += 1
-
                     if index != 0:
                         print('ROOT TWEET {} by {} @ line # {}'.format(elem_list[4], self.root_user_id, index))
                     break
@@ -61,10 +50,33 @@ class Cascade:
                     continue
                 src_user_id, src_tweet_id, src_tweet_time, dst_user_id, dst_tweet_id, dst_tweet_time = elem_list
 
-                all_users.add(dst_user_id)
-                users_dict[self.label].add(dst_user_id)
-                trace_counter += 1
-                trace_dict[self.label] += 1
+                # NetworkX Graph
+                self.network.add_weighted_edges_from(
+                    [(src_user_id, dst_user_id, float(dst_tweet_time) - float(src_tweet_time))])
+
+    # =============================
+    #      Structural Analysis
+    # =============================
+    def nework_to_json(self):
+        G = self.network
+        json_obj = json_graph.node_link_data(G, {'link': 'links', 'source': 'source', 'target': 'target'})
+        # print(json_obj)
+        # print("=============================")
+        json_str = json.dumps(json_obj)
+        # print(json_str)
+
+        ensure_directory(OUT_PATH + 'json/')
+        out_file_name = OUT_PATH + 'json/' + self.root_tweet_id + '_' + self.label + '.json'
+        print(out_file_name)
+
+        # out_file = open(out_file_name, 'w', encoding='utf-8', newline='')
+        # json.dump(json_str, out_file)
+
+        with open(out_file_name, 'w', encoding='utf-8') as f:
+            json.dump(json_obj, f)
+            # json.dump(json_str, f, ensure_ascii=False, indent=4)
+
+
 
 
 # TODO: Class Inheritance
@@ -100,23 +112,19 @@ class CascadeAnalyzer(object):
             label = self.meta_df.loc[self.meta_df['tweet_id'] == root_tweet_id, 'label'].item()  # label
             self.cascades_dict[root_tweet_id] = Cascade(root_tweet_id, cascade_path, label)
 
+            print(self.cascades_dict[root_tweet_id].root_tweet_id)
+            # break  # temporal
+
     # Main Outer loop
     def iterate_cascades(self):
         for index, row in self.meta_df.iterrows():
             tweet_id = row['tweet_id']
+            # tweet_id = '553588178687655936'  # temporal
             cascade = self.cascades_dict[tweet_id]
             print('#', index, row['tweet_id'], row['label'])
+            cascade.nework_to_json()
+            # break  # temporal
 
-        print("----------------------")
-        print('total', len(all_users))  # 287,649 - Twitter16
-        for label in users_dict:
-            print(label, len(users_dict[label]))
-
-        print(trace_counter, trace_dict)
-        print("----------------------")
-
-    def cascade_to_out(self):  # CascadeAnalyzer
-        print(self.feature_df)
 
 
 def main():
@@ -126,9 +134,10 @@ def main():
 
 
 # Rumor Diffusion Analysis Project
-print("=====================")
-print("     Total Count     ")
-print("=====================\n\n")
+# https://developer.twitter.com/en/docs/accounts-and-users/follow-search-get-users/api-reference/get-friendships-no_retweets-ids
+print("==============")
+print("     JSON     ")
+print("==============\n\n")
 
 if __name__ == '__main__':
     start_time = time.time()  # Timer Start

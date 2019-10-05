@@ -107,6 +107,7 @@ class Cascade:
         print('\t root_to_all_depth_sum: ', sum(nx.single_source_shortest_path_length(G, self.root_user_id).values()))
         print('\t root_to_all_depth_max: ', max(nx.single_source_shortest_path_length(G, self.root_user_id).values()))
         print('\t one_hop_neighbors:', len(list(G.neighbors(self.root_user_id))))
+        print(hops)
         print('\t', "user count by hop(s): ", hops[1] - hops[0], hops[2] - hops[1], hops[3] - hops[2],
                                               hops[4] - hops[3], hops[5] - hops[4], hops[6] - hops[5],
                                               hops[7] - hops[6], hops[8] - hops[7], hops[9] - hops[8])
@@ -117,8 +118,7 @@ class Cascade:
         self.max_depth = max(shortest_path_dict.values())
 
         for i in range(max_hop_count - 1):
-            self.network_features[str(i) + "_hop_neighbor_count"] = hops[i + 1] - hops[i]
-
+            self.network_features[str(i+1) + "_hop_neighbor_count"] = hops[i + 1] - hops[i]
 
 
         # features to data frame
@@ -194,6 +194,8 @@ class CascadeAnalyzer(object):
             cascade = self.cascades_dict[tweet_id]
             print('#', index, row['tweet_id'], row['label'])
             cascade.calc_structural_features()
+
+            # break
 
     def cascade_to_csv(self):  # CascadeAnalyzer
         ensure_directory(OUT_PATH)
